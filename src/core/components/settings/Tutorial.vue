@@ -1,6 +1,15 @@
 <script>
-import { mapMutations } from 'vuex';
-import Driver from 'driver.js';
+import { getActivePinia } from 'pinia';
+
+const useStore = id => {
+    const store = getActivePinia()?._s?.get(id);
+
+    if (!store) {
+        throw new Error(`Missing Pinia store: ${id}`);
+    }
+
+    return store;
+};
 
 export default {
     name: 'Tutorial',
@@ -19,19 +28,35 @@ export default {
         },
     },
 
-    data: v => ({
-        driver: new Driver({
-            animate: false,
-            doneBtnText: v.i18n(v.labels.done),
-            closeBtnText: v.i18n(v.labels.close),
-            nextBtnText: v.i18n(v.labels.next),
-            prevBtnText: v.i18n(v.labels.previous),
-        }),
+    data: () => ({
+        driver: null,
     }),
 
     methods: {
-        ...mapMutations('layout/settings', { toggleSettingsBar: 'toggle' }),
-        fetch() {
+        async resolveDriver() {
+            if (this.driver) {
+                return this.driver;
+            }
+
+            const module = await import('driver.js');
+            const Driver = module.default?.default
+                ?? module.default
+                ?? module.Driver
+                ?? module;
+
+            this.driver = new Driver({
+                animate: false,
+                doneBtnText: this.i18n(this.labels.done),
+                closeBtnText: this.i18n(this.labels.close),
+                nextBtnText: this.i18n(this.labels.next),
+                prevBtnText: this.i18n(this.labels.previous),
+            });
+
+            return this.driver;
+        },
+        async fetch() {
+            await this.resolveDriver();
+
             this.http.get(this.route('system.tutorials.load'), {
                 params: { route: this.$route.name },
             }).then(({ data }) => this.start(data))
@@ -42,7 +67,7 @@ export default {
                 return;
             }
 
-            this.toggleSettingsBar();
+            useStore('layout').toggleSettings();
             this.driver.defineSteps(this.localise(steps));
             this.driver.start();
         },

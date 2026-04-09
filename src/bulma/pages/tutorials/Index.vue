@@ -1,8 +1,8 @@
 <template>
-    <enso-table class="box is-paddingless raises-on-hover"
+    <enso-table class="box p-0"
         id="tutorials">
         <template #placement="{ column, row }">
-            <span class="tag is-table-tag is-info">
+            <span class="tag is-info">
                 {{ column.enum._get(row.placement) }}
             </span>
         </template>

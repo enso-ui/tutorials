@@ -1,18 +1,18 @@
 <template>
-    <div class="level is-mobile">
+    <div class="level is-mobile tutorial-setting">
         <div class="level-left">
-            <div class="level-item">
+            <div class="level-item m-0 is-flex is-align-items-center">
                 {{ i18n('Tutorial') }}
             </div>
         </div>
         <div class="level-right">
-            <div class="level-item">
+            <div class="level-item m-0 is-flex is-align-items-center">
                 <core-tutorial>
                     <template #default="{ itemEvents }">
-                        <a class="button is-naked"
+                        <a class="button is-small is-naked p-0 is-flex is-align-items-center is-justify-content-center"
                             v-on="itemEvents">
-                            <span class="icon is-small">
-                                <fa icon="question"/>
+                            <span class="icon is-small m-0 is-flex is-align-items-center is-justify-content-center">
+                                <fa :icon="faQuestion"/>
                             </span>
                         </a>
                     </template>
@@ -24,11 +24,8 @@
 
 <script>
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import CoreTutorial from '../../../core/components/settings/Tutorial.vue';
-
-library.add(faQuestion);
 
 export default {
     name: 'Tutorial',
@@ -36,9 +33,17 @@ export default {
     components: { CoreTutorial, Fa },
 
     inject: ['i18n'],
+
+    data: () => ({
+        faQuestion,
+    }),
 };
 </script>
 
 <style lang="scss">
-    @import '~driver.js/dist/driver.min.css';
+    @import 'driver.js/dist/driver.min.css';
+
+    .tutorial-setting .svg-inline--fa {
+        vertical-align: 0;
+    }
 </style>
