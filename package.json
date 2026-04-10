@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/enso-ui/tutorials#readme",
   "dependencies": {
-    "@enso-ui/forms": "^4.0.0",
-    "@enso-ui/tables": "^4.0.0",
-    "@enso-ui/ui": "^7.0.0",
+    "@enso-ui/forms": "^4.1.0",
+    "@enso-ui/tables": "^4.1.0",
+    "@enso-ui/ui": "^7.1.0",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/vue-fontawesome": "3.1.3",
