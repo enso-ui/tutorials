@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/tutorials",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "description": "Basic tutorials package",
   "main": "src/bulma/pages/tutorials/Index.vue",
   "scripts": {
