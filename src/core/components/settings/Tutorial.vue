@@ -1,15 +1,5 @@
 <script>
-import { getActivePinia } from 'pinia';
-
-const useStore = id => {
-    const store = getActivePinia()?._s?.get(id);
-
-    if (!store) {
-        throw new Error(`Missing Pinia store: ${id}`);
-    }
-
-    return store;
-};
+import { layout as useLayout } from '@enso-ui/ui/src/pinia/layout';
 
 export default {
     name: 'Tutorial',
@@ -67,7 +57,7 @@ export default {
                 return;
             }
 
-            useStore('layout').toggleSettings();
+            useLayout().toggleSettings();
             this.driver.defineSteps(this.localise(steps));
             this.driver.start();
         },
