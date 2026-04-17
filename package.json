@@ -4,7 +4,8 @@
   "description": "Basic tutorials package",
   "main": "src/bulma/pages/tutorials/Index.vue",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "repository": {
     "type": "git",
@@ -34,10 +35,13 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
     "@enso-ui/forms": "^4.1.0",
     "@enso-ui/tables": "^4.1.0",
     "@enso-ui/ui": "^7.1.0",
+    "jsdom": "^26.1.0",
     "pinia": "^3.0.3",
+    "vitest": "^3.2.4",
     "vue": "^3.5.0"
   }
 }

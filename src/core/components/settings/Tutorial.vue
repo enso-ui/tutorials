@@ -1,5 +1,5 @@
 <script>
-import { layout as useLayout } from '@enso-ui/ui/src/pinia/layout';
+import { layout } from '@enso-ui/ui/src/pinia/layout';
 
 export default {
     name: 'Tutorial',
@@ -57,7 +57,7 @@ export default {
                 return;
             }
 
-            useLayout().toggleSettings();
+            layout().toggleSettings();
             this.driver.defineSteps(this.localise(steps));
             this.driver.start();
         },
