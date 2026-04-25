@@ -2,7 +2,9 @@
     <div class="level is-mobile tutorial-setting">
         <div class="level-left">
             <div class="level-item m-0 is-flex is-align-items-center">
-                {{ i18n('Tutorial') }}
+                <span class="menu-item-label">
+                    {{ i18n('Tutorial') }}
+                </span>
             </div>
         </div>
         <div class="level-right">
